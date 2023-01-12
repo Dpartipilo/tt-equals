@@ -10,6 +10,7 @@ export const ContactDetails = () => {
     editMode,
     toggleEditMode,
     editContact,
+    deleteContact,
   } = useContext(ContactsContext);
   const { id, avatar, name, email, phone, birthday, createdAt } =
     selectedContact!;
@@ -40,6 +41,11 @@ export const ContactDetails = () => {
   const handleClose = () => {
     handleCancelEdit();
     selectContact("");
+  };
+
+  const handleDelete = () => {
+    handleClose();
+    deleteContact(id);
   };
 
   return (
@@ -126,6 +132,13 @@ export const ContactDetails = () => {
         </div>
 
         <div className={styles.buttonContainer}>
+          <button
+            className={styles.deleteButton}
+            onClick={() => handleDelete()}
+          >
+            Delete
+          </button>
+
           <button onClick={() => handleClose()}>Close</button>
         </div>
       </div>

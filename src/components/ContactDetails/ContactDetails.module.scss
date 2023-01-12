@@ -104,7 +104,7 @@
 
         .buttonContainer{
             display: flex;
-            justify-content: end;
+            justify-content: space-between;
             width: 100%;
             button{
                 cursor: pointer;
@@ -118,6 +118,11 @@
                     background-color: #858585;
                 }
                 font-size: 14px;
+                &.deleteButton{
+                    background-color: #ca0916;
+                    font-weight: bold;
+                    color: white;
+                }
             }
         }
     }

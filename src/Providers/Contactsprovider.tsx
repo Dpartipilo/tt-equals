@@ -19,6 +19,7 @@ type TContext = {
   serverError: unknown;
   getContacts: () => void;
   editContact: (id: string, body?: {}) => void;
+  deleteContact: (id: string) => void;
   selectContact: (id: string) => void;
   toggleEditMode: (isEditMode?: boolean) => void;
 };
@@ -31,6 +32,7 @@ export const ContactsContext = createContext<TContext>({
   serverError: null,
   getContacts: () => null,
   editContact: () => null,
+  deleteContact: () => null,
   selectContact: () => null,
   toggleEditMode: () => null,
 });
@@ -87,6 +89,21 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
     [makeRequest, contacts]
   );
 
+  const deleteContact = useCallback(
+    async (id: string) => {
+      const deletedContact = await makeRequest("delete", `${baseURL}/${id}`);
+      const index = contacts.findIndex((c) => c.id === id);
+      const newContacts = [...contacts];
+      newContacts.splice(index, 1);
+
+      console.log(deletedContact);
+
+      setSelectedContact(undefined);
+      setContacts(newContacts);
+    },
+    [makeRequest, contacts]
+  );
+
   const toggleEditMode = useCallback((isEditMode?: boolean) => {
     setEditMode(isEditMode || false);
   }, []);
@@ -108,6 +125,7 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
       serverError,
       getContacts,
       editContact,
+      deleteContact,
       selectContact,
       toggleEditMode,
     };
@@ -119,6 +137,7 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
     serverError,
     getContacts,
     editContact,
+    deleteContact,
     selectContact,
     toggleEditMode,
   ]);
