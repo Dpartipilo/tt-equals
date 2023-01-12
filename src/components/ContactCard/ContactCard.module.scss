@@ -3,6 +3,7 @@
     display: flex;
     height: 100px;
     width: 90%;
+    min-width: 306px;
     margin: 5px 0;
     border-radius: 5px;
     box-shadow: 5px 5px 8px #676767;
@@ -57,7 +58,7 @@
             }
         }
     }
-    .name{
+    .nameContainer{
         border-radius: 0 5px 5px 0;
         background-color: #262835;
         padding: 0 40px;
@@ -74,8 +75,6 @@
         }
         &::after{
             content: ' ';
-            // width: 5px;
-            // height: 30px;
             position: absolute;
             right: -14px;
             bottom: 10px;
@@ -86,11 +85,8 @@
             border-bottom: 14px solid transparent;
             border-top: 32px solid transparent;
             border-radius: 50% 0 0 50%
-            // background-color: #ebebeb;
-            // border-radius: 50%  0 0  50%;
+
         }
-
     }
-
-
 }
+

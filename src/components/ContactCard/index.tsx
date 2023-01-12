@@ -18,7 +18,7 @@ export const ContactCard = (props: TYPES.ContactProps) => {
           <img src={avatar} alt="contact avatar" />
         </span>
       </div>
-      <div className={styles.name}>
+      <div className={styles.nameContainer}>
         <span>{name}</span>
       </div>
     </button>

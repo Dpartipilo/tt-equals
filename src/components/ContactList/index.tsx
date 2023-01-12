@@ -2,21 +2,16 @@ import { ContactCard } from "../ContactCard";
 import styles from "./ContactList.module.scss";
 import * as TYPES from "../../types";
 import { useContext, useEffect } from "react";
-import { ContactsContext } from "../../Providers/Contactsprovider";
-
-// type ContactsListProps = {
-//   contacts: TYPES.ContactProps[];
-// };
-
-const baseURL = "https://61c32f169cfb8f0017a3e9f4.mockapi.io/api/v1/contacts";
+import { ContactsContext, baseURL } from "../../Providers/Contactsprovider";
+import { ContactDetails } from "../ContactDetails";
 
 export const ContactList = () => {
-  const { isLoading, contacts, serverError, fetchData } =
+  const { isLoading, contacts, serverError, selectedContact, getContacts } =
     useContext(ContactsContext);
 
   useEffect(() => {
-    fetchData("get", baseURL);
-  }, [fetchData]);
+    getContacts();
+  }, [getContacts]);
 
   return (
     <>
@@ -32,6 +27,12 @@ export const ContactList = () => {
               <ContactCard key={contact.id} {...contact} />
             ))}
           </div>
+        </div>
+      )}
+
+      {selectedContact && (
+        <div>
+          <ContactDetails />
         </div>
       )}
     </>

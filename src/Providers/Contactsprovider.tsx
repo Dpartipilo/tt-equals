@@ -8,35 +8,46 @@ import {
 import * as TYPES from "../types";
 import axios from "axios";
 
+export const baseURL =
+  "https://61c32f169cfb8f0017a3e9f4.mockapi.io/api/v1/contacts";
+
 type TContext = {
+  editMode: boolean;
   isLoading: boolean;
   contacts: TYPES.ContactProps[];
   selectedContact: TYPES.ContactProps | undefined;
   serverError: unknown;
-  fetchData: (method: string, url: string, body?: {}) => void;
+  getContacts: () => void;
+  editContact: (id: string, body?: {}) => void;
   selectContact: (id: string) => void;
+  toggleEditMode: (isEditMode?: boolean) => void;
 };
 
 export const ContactsContext = createContext<TContext>({
+  editMode: false,
   isLoading: false,
   contacts: [],
   selectedContact: undefined,
   serverError: null,
-  fetchData: () => null,
+  getContacts: () => null,
+  editContact: () => null,
   selectContact: () => null,
+  toggleEditMode: () => null,
 });
 
 type ContactsProviderProps = { children?: ReactElement };
 
 export const ContactsProvider = ({ children }: ContactsProviderProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
   const [contacts, setContacts] = useState<TYPES.ContactProps[]>([]);
   const [selectedContact, setSelectedContact] = useState<TYPES.ContactProps>();
   const [serverError, setServerError] = useState<unknown>(null);
 
-  const fetchData = useCallback(
+  const makeRequest = useCallback(
     async (method: string, url: string, body?: {}) => {
       setIsLoading(true);
+
       try {
         const resp = await axios({
           method,
@@ -45,8 +56,7 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
         });
 
         const data = await resp?.data;
-
-        setContacts(data);
+        return data;
       } catch (error) {
         console.log(error);
         setServerError(error);
@@ -56,6 +66,30 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
     },
     []
   );
+
+  const getContacts = useCallback(async () => {
+    const contacts = await makeRequest("get", baseURL);
+    setContacts(contacts);
+  }, [makeRequest]);
+
+  const editContact = useCallback(
+    async (id: string, body?: {}) => {
+      const editedContact = await makeRequest("put", `${baseURL}/${id}`, body);
+      const index = contacts.findIndex((c) => c.id === editedContact.id);
+      const newContacts = [...contacts];
+      newContacts[index] = editedContact;
+
+      console.log(editedContact);
+
+      setSelectedContact(editedContact);
+      setContacts(newContacts);
+    },
+    [makeRequest, contacts]
+  );
+
+  const toggleEditMode = useCallback((isEditMode?: boolean) => {
+    setEditMode(isEditMode || false);
+  }, []);
 
   const selectContact = useCallback(
     (id: string) => {
@@ -68,19 +102,25 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
   const providerValue = useMemo(() => {
     return {
       isLoading,
+      editMode,
       contacts,
       selectedContact,
       serverError,
-      fetchData,
+      getContacts,
+      editContact,
       selectContact,
+      toggleEditMode,
     };
   }, [
     isLoading,
+    editMode,
     contacts,
     selectedContact,
     serverError,
-    fetchData,
+    getContacts,
+    editContact,
     selectContact,
+    toggleEditMode,
   ]);
 
   return (

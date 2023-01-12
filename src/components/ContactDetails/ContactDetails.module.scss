@@ -1,3 +1,126 @@
 .main{
-    width: 90px;
+    background-color: #2f2f2fe4;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+ 
+
+    .detailsCard{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #090b18;
+        min-width: 310px;
+        width: 20%;
+        height: 50%;
+        padding: 40px;
+        border-radius: 5px;
+
+        .mainDetails{
+            padding: 60px 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+            width: 100%;
+            height: 40%;
+            border-radius: 5px;
+            background-color: #262835;
+            justify-content: space-between;
+            .nameContainer{
+                width: 80%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+            
+            .toolbar{
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                align-items: flex-end;
+            }
+            .avatar{
+                position: absolute;
+                top: -40px;
+                left: calc(50% - 40px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 80px;
+                border-radius: 100%;
+                box-shadow: 2px 2px 15px #1b1b1b;
+                img{
+                    border-radius: 100%;
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .name{
+                text-transform: uppercase;
+                font-weight: bold;
+                color: #FFFFFF;
+                font-size: 24px;
+            }
+
+            .email{
+                margin-top: 5px;
+                color: #c4c4c4c3;
+            }
+        }
+        .secondaryDetails{
+            width: 100%;
+            height: 80%;
+            color: white;
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: space-between;
+
+            .detailContainer{
+                display: flex;
+                flex-direction: column;
+                font-size: 18px;
+                margin-bottom: 15px;
+                label{
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+                span{
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .buttonContainer{
+            display: flex;
+            justify-content: end;
+            width: 100%;
+            button{
+                cursor: pointer;
+                background-color: #ebebeb;
+                border: none;
+                border-radius: 5px;
+                width: 55px;
+                height: 35px;
+                margin-right: 5px;
+                &:hover{
+                    background-color: #858585;
+                }
+                font-size: 14px;
+            }
+        }
+    }
+
+
 }
