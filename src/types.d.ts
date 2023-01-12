@@ -5,5 +5,5 @@ export type ContactProps = {
   email?: string;
   phone?: string;
   birthday?: string;
-  id?: string;
+  id: string;
 };

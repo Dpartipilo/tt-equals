@@ -1,21 +1,39 @@
 import { ContactCard } from "../ContactCard";
 import styles from "./ContactList.module.scss";
 import * as TYPES from "../../types";
+import { useContext, useEffect } from "react";
+import { ContactsContext } from "../../Providers/Contactsprovider";
 
-type ContactsListProps = {
-  contacts: TYPES.ContactProps[];
-};
+// type ContactsListProps = {
+//   contacts: TYPES.ContactProps[];
+// };
 
-export const ContactList = (props: ContactsListProps) => {
-  const { contacts } = props;
+const baseURL = "https://61c32f169cfb8f0017a3e9f4.mockapi.io/api/v1/contacts";
+
+export const ContactList = () => {
+  const { isLoading, contacts, serverError, fetchData } =
+    useContext(ContactsContext);
+
+  useEffect(() => {
+    fetchData("get", baseURL);
+  }, [fetchData]);
+
   return (
-    <div className={styles.main}>
-      <h2>Contacts</h2>
-      <div className={styles.contactsContainer}>
-        {contacts.map((contact: TYPES.ContactProps) => (
-          <ContactCard key={contact.id} {...contact} />
-        ))}
-      </div>
-    </div>
+    <>
+      {!isLoading && serverError ? (
+        <span>serverError</span>
+      ) : isLoading ? (
+        <span>is loading...</span>
+      ) : (
+        <div className={styles.main}>
+          <h2>Contacts</h2>
+          <div className={styles.contactsContainer}>
+            {contacts.map((contact: TYPES.ContactProps) => (
+              <ContactCard key={contact.id} {...contact} />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
