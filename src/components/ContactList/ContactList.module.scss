@@ -1,3 +1,12 @@
+.loadingContainer{
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
 .main{
     display: flex;
     flex-direction: column;
@@ -7,10 +16,12 @@
     margin: 20px;
     border-radius: 5px;
 
+
     .buttonContainer{
         display: flex;
         justify-content: space-between;
         width: 100%;
+
         button{
             cursor: pointer;
             background-color: #346d44;

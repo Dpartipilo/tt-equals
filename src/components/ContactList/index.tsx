@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 import { ContactsContext } from "../../Providers/Contactsprovider";
 import { ContactDetails } from "../ContactDetails";
 import { AddContactForm } from "../AddContactForm";
+import SquareLoader from "react-spinners/SquareLoader";
 
 export const ContactList = () => {
   const {
@@ -26,7 +27,13 @@ export const ContactList = () => {
       {!isLoading && serverError ? (
         <span>serverError</span>
       ) : isLoading ? (
-        <span>is loading...</span>
+        <div className={styles.loadingContainer}>
+          <SquareLoader
+            color={"#262835"}
+            size={150}
+            aria-label="Loading Spinner"
+          />
+        </div>
       ) : (
         <div className={styles.main}>
           <div className={styles.buttonContainer}>

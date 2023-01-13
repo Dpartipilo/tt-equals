@@ -88,8 +88,6 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
       const newContacts = [...contacts];
       newContacts[index] = editedContact;
 
-      console.log(editedContact);
-
       setSelectedContact(editedContact);
       setContacts(newContacts);
     },
@@ -101,7 +99,6 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
       const newContact = await makeRequest("post", baseURL, body);
       const newContacts = [...contacts, newContact];
 
-      console.log(newContact);
       setContacts(newContacts);
     },
     [contacts, makeRequest]
@@ -109,12 +106,10 @@ export const ContactsProvider = ({ children }: ContactsProviderProps) => {
 
   const deleteContact = useCallback(
     async (id: string) => {
-      const deletedContact = await makeRequest("delete", `${baseURL}/${id}`);
+      await makeRequest("delete", `${baseURL}/${id}`);
       const index = contacts.findIndex((c) => c.id === id);
       const newContacts = [...contacts];
       newContacts.splice(index, 1);
-
-      console.log(deletedContact);
 
       setSelectedContact(undefined);
       setContacts(newContacts);

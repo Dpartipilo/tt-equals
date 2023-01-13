@@ -15,15 +15,6 @@ export const AddContactForm = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({
-      id: uuidv4(),
-      name: newName,
-      email: newEmail,
-      avatar: newAvatar,
-      phone: newPhone,
-      birthday: newBirthday,
-      createdAt: new Date().toISOString(),
-    });
     toggleAddNewContact(false);
     createContact({
       id: uuidv4(),
