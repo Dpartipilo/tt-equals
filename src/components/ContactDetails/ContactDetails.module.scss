@@ -18,7 +18,7 @@
         background-color: #090b18;
         min-width: 310px;
         width: 20%;
-        height: 50%;
+        height: fit-content;
         padding: 40px;
         border-radius: 5px;
 
@@ -114,7 +114,6 @@
                 border-radius: 5px;
                 width: 55px;
                 height: 35px;
-                margin-right: 5px;
                 &:hover{
                     background-color: #858585;
                 }

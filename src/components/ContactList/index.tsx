@@ -1,7 +1,7 @@
 import { ContactCard } from "../ContactCard";
 import styles from "./ContactList.module.scss";
 import * as TYPES from "../../types";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ContactsContext } from "../../Providers/Contactsprovider";
 import { ContactDetails } from "../ContactDetails";
 import { AddContactForm } from "../AddContactForm";
