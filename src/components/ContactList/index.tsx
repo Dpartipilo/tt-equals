@@ -32,6 +32,7 @@ export const ContactList = () => {
             color={"#262835"}
             size={150}
             aria-label="Loading Spinner"
+            data-testid="loader"
           />
         </div>
       ) : (

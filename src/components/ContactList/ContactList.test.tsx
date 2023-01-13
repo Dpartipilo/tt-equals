@@ -14,7 +14,7 @@ describe("ContactList component", () => {
     );
 
     // Check that loading indication is rendered
-    const loading = await screen.findByText(/loading/);
+    const loading = await screen.findByTestId(/loader/i);
     expect(loading).toBeInTheDocument();
 
     //Check that contacts list is rendered
