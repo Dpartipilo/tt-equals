@@ -115,6 +115,7 @@
                 border-radius: 5px;
                 width: 55px;
                 height: 35px;
+                font-weight: bold;
                 &:hover{
                     background-color: #858585;
                 }
@@ -123,6 +124,16 @@
                     background-color: #ca0916;
                     font-weight: bold;
                     color: white;
+                    &:hover{
+                        background-color: #980610;
+                    }
+                }
+                &.saveButton{
+                       background-color: #346d44;
+                       color: white;
+                       &:hover{
+                        background-color: #245231;
+                    }
                 }
             }
         }

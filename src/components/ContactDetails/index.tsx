@@ -99,7 +99,12 @@ export const ContactDetails = () => {
             {editMode && (
               <>
                 <button onClick={() => handleCancelEdit()}>Cancel</button>
-                <button onClick={() => handleSaveEdit()}>Save</button>
+                <button
+                  className={styles.saveButton}
+                  onClick={() => handleSaveEdit()}
+                >
+                  Save
+                </button>
               </>
             )}
           </div>
