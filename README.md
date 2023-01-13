@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Equals Money Tech Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was completed as part of a tech test required by Equals. It was created mainly using `ReactJS` and `Typescript`.
 
-## Available Scripts
+My approach was to create reusable components that are simple, scalable and easy to work with, making it easier to add more functionality if its needed in the future.
 
-In the project directory, you can run:
+The app was developed with the following in mind:
 
-### `yarn start`
+- Responsiveness
+- Accessibility
+- Simplicity
+- Scalability
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Styles
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Styling was done using `Sass` pre-processor and `Modular CSS`.
 
-### `yarn test`
+## Tests
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Tests were done using `React testing library`.
 
-### `yarn build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Please follow the instructions to clone this project and install all the necessary dependencies.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Open a terminal and navigate to the folder in which you wish to save the project. Run the following command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone https://github.com/Dpartipilo/tt-equals.git
+```
 
-### `yarn eject`
+2. Navigate into the new created folder e.g: `cd tt-equals` and run the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm install / yarn install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running the App
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. In order to run the App please run the command:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+npm start / yarn start
+```
 
-## Learn More
+2. It should open a tab in your browser with the following address:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+http://localhost:3000
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. To run tests please run the following command:
+
+```
+npm test / yarn test
+```
+
+## Author
+
+- [Diego Partipilo](https://github.com/Dpartipilo)
+
+## Acknowledgments
+
+Thank you for the opportunity to do this tech test, I really hope you can fine some value on it. I enjoyed it and I would have loved to have more time to develop it further and better.
+
+## Further development
+
+- Unit tested all components as much as possible.
+- Integration tests.
+- API request tests.
+- More accessibility features.
+- Error handlers.
