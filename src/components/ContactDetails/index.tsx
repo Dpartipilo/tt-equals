@@ -15,12 +15,14 @@ export const ContactDetails = () => {
   const { id, avatar, name, email, phone, birthday, createdAt } =
     selectedContact!;
 
+  const [editedAvatar, setEditAvatar] = useState(avatar);
   const [editedName, setEditName] = useState(name);
   const [editedEmail, setEditEmail] = useState(email);
   const [editedPhone, setEditPhone] = useState(phone);
   const [editedBirthday, setEditBirthday] = useState(birthday);
 
   const handleCancelEdit = () => {
+    setEditAvatar(avatar);
     setEditName(name);
     setEditEmail(email);
     setEditPhone(phone);
@@ -30,6 +32,7 @@ export const ContactDetails = () => {
 
   const handleSaveEdit = () => {
     editContact(id, {
+      avatar: editedAvatar,
       name: editedName,
       email: editedEmail,
       phone: editedPhone,
@@ -57,6 +60,14 @@ export const ContactDetails = () => {
               <img src={avatar} alt="contact avatar" />
             </span>
 
+            {editMode && (
+              <InputText
+                id="avatar-input"
+                label="Avatar URL"
+                value={editedAvatar}
+                onChange={(e) => setEditAvatar(e.target.value)}
+              />
+            )}
             {editMode ? (
               <InputText
                 id="name-input"
