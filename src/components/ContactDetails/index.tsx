@@ -49,7 +49,7 @@ export const ContactDetails = () => {
   };
 
   return (
-    <div className={styles.main}>
+    <div className={styles.main} role="dialog">
       <div className={styles.detailsCard}>
         <div className={styles.mainDetails}>
           <div className={styles.nameContainer}>
