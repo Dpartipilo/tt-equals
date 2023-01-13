@@ -1,13 +1,21 @@
 import { ContactCard } from "../ContactCard";
 import styles from "./ContactList.module.scss";
 import * as TYPES from "../../types";
-import { useContext, useEffect } from "react";
-import { ContactsContext, baseURL } from "../../Providers/Contactsprovider";
+import { useContext, useEffect, useState } from "react";
+import { ContactsContext } from "../../Providers/Contactsprovider";
 import { ContactDetails } from "../ContactDetails";
+import { AddContactForm } from "../AddContactForm";
 
 export const ContactList = () => {
-  const { isLoading, contacts, serverError, selectedContact, getContacts } =
-    useContext(ContactsContext);
+  const {
+    isLoading,
+    contacts,
+    serverError,
+    selectedContact,
+    getContacts,
+    toggleAddNewContact,
+    addNewContactMode,
+  } = useContext(ContactsContext);
 
   useEffect(() => {
     getContacts();
@@ -21,7 +29,12 @@ export const ContactList = () => {
         <span>is loading...</span>
       ) : (
         <div className={styles.main}>
-          <h2>Contacts</h2>
+          <div className={styles.buttonContainer}>
+            <h2>{`Contacts (${contacts.length})`}</h2>
+            <button onClick={() => toggleAddNewContact(true)}>
+              Add contact
+            </button>
+          </div>
           <div className={styles.contactsContainer}>
             {contacts.map((contact: TYPES.ContactProps) => (
               <ContactCard key={contact.id} {...contact} />
@@ -35,6 +48,7 @@ export const ContactList = () => {
           <ContactDetails />
         </div>
       )}
+      {addNewContactMode && <AddContactForm />}
     </>
   );
 };

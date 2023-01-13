@@ -60,6 +60,7 @@ export const ContactDetails = () => {
             {editMode ? (
               <InputText
                 id="name-input"
+                label="Name"
                 value={editedName}
                 onChange={(e) => setEditName(e.target.value)}
               />
@@ -70,6 +71,7 @@ export const ContactDetails = () => {
             {editMode ? (
               <InputText
                 id="email-input"
+                label="Email"
                 value={editedEmail}
                 onChange={(e) => setEditEmail(e.target.value)}
               />
@@ -94,7 +96,7 @@ export const ContactDetails = () => {
 
         <div className={styles.secondaryDetails}>
           <div className={styles.detailContainer}>
-            <label>Phone</label>
+            <label htmlFor="phone-input">Phone</label>
 
             {editMode ? (
               <InputText
@@ -108,11 +110,11 @@ export const ContactDetails = () => {
           </div>
 
           <div className={styles.detailContainer}>
-            <label>Birthday</label>
+            <label htmlFor="birthday-input">Birthday</label>
 
             {editMode ? (
               <InputText
-                id="phone-input"
+                id="birthday-input"
                 type="date"
                 value={editedBirthday?.replace(/T.+/g, "")}
                 onChange={(e) => setEditBirthday(e.target.value)}
